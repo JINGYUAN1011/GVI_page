@@ -1,0 +1,283 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><p><br></p>
+<title>
+CS294-26 Final Project- Jing Yuan
+</title>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<body style="background-color:#FFFFFF;"></body>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- common.css -->
+<style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: -apple-system, Helvetica, Arial, sans-serif;margin: 0;padding: 20px;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;height: auto;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 90%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+<!-- ace-static.css -->
+<style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter > .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+<style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+<!-- export.css -->
+
+<style>
+    body{margin:0 auto;max-width:1000px;line-height:1.4}
+    #nav{margin:5px 0 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+    .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+    .latex-cell{white-space:pre-wrap;}
+    div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 100px;					
+    height: 40px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background:#d6f5e5;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+    
+  </style>
+<!-- User CSS -->
+<style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script>
+<script type="text/javascript" src=" MathJax.js"></script>
+
+<h1 style="text-align: center;" id="Project Title">CS194 - 26 Intro to Computer Vision and Computational Photography</h1>
+<h2 style="text-align: center;">Final project: Window Greenery Calculation by Using Street Image</h2>
+<p style="text-align: center;"> By Jing Yuan [Email: jingyuan10@berkeley.edu]</p>
+
+<div align="center">
+<a href="Final Paper2.pdf">Final Paper</a> &nbsp &nbsp <a href="https://youtu.be/Z8d-V8sQ3ps">Video Presentation</a> 
+</div>
+<br>
+<br>
+<p><i>To measure the greenness of window views, Google Street View became a great source for green view index (GVI) calculation. For this study, I used a fully convolutional network (FCN) for semantic segmentation to separate street view into green space and other types. After obtaining the image segmentations by feeding the Google street view images into the trained network, the proportion of green space (e.g., trees, grass, plants) will be determined. To approximate human’s horizontal visual fields from a window, I selected the 3 images which equal peoples’ forward-facing view as the actual window view to calculate the window green view index (Window GVI) of this view. Finally, I extracted Google street view images of the neighborhood near UC Berkeley campus and created a window GVI heat map for this neighborhood. </i>
+
+</p>
+
+<br>
+<div align="center"><font size=5>
+<b>Window GVI of UC Berkeley Campus</b></font><br></div>
+The following map is a demo of this project's outcome. Each point in the map represent the location of the window along the road, so when the 
+window located on different side of the road the GVI will vary. And the color of the point represent the level of the Window GVI, the darker the green,
+the more greenery within the window view. <b>Please hover above the map to explore the Window GVI of the campus!!</b>
+
+<div id="my_dataviz" align="center">
+  <script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 10, right: 30, bottom: 30, left: 60},
+        width = 700 - margin.left - margin.right,
+        height = 530 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+
+    var imgs = svg.selectAll("image").data([0]);
+      imgs.enter()
+      .append("svg:image")
+      .attr("xlink:href", "pic/map1.png")
+      .attr("x", "0")
+      .attr("y", "-300")
+      .attr("width", "700")
+      .attr("height", "1100");
+    
+     
+    
+    //Read the data
+    d3.csv("https://raw.githubusercontent.com/JINGYUAN1011/GVI/main/gps_5.csv", function(data) {
+    
+      // Add X axis
+      var x = d3.scaleLinear()
+        .domain([0, 1500])
+        .range([ 0, 720 ]);
+      
+    
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([0, 1000])
+        .range([ 470, 0]);
+      var div = d3.select("body").append("div")	
+        .attr("class", "tooltip")				
+        .style("opacity", 0);
+      
+      var myColor = d3.scaleLinear().domain([1,10])
+      .range(["white", "green"]);
+      // Add dots
+      svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function (d) { return x(d.yy); } )
+          .attr("cy", function (d) { return y(924-d.xx); } )
+          .attr("fill", function(d){return myColor(d.green*50) })
+          .attr("r", 3.7 )
+      .style("opacity", 0.7)
+      .style("stroke", "white")
+      .on("mouseover", function(d) {	
+        d3.select(this).transition()
+          .attr("r", 10);	
+            div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div	.html("Window GVI of this location:" + "<br/>"  + d3.format(".0%")(d.green))	
+                .style("left", (d3.event.pageX+10) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px")
+                .style("fill", function(d){return myColor(d.green*50) });	
+            })					
+        .on("mouseout", function(d) {	
+          d3.select(this).transition()
+          .attr("r", 3.7);		
+            div.transition()		
+                .duration(500)		
+                .style("opacity", 0);	 });
+                var linear = d3.scaleLinear()
+    
+    // Create data
+var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+// Option 1: give 2 color names
+var myColor = d3.scaleLinear().domain([1,10])
+  .range(["white", "green"])
+    svg.selectAll(".firstrow")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", function(d,i){return  i*60}).attr("cy", 500).attr("r", 5)
+        .attr("fill", function(d){return myColor(d) })
+        .append("text")
+        .text(function(d){return 1})
+});  
+</script>
+<figcaption ><b>Window GVI </b> 0% ----> 100%</figcaption>
+
+
+  </div>
+  <br>
+  <br>
+<h2 id="Introduction"> INTRODUCTION</h2>
+<p>DDuring the Cocvid-19 pandemic, “stay-in-place” order made most of the people work at home with limited outdoor activities. There are increasing mental health issues as the pandemic goes on[1]. A recently published study suggested that nature around people’s homes may help mitigate some of the negative mental health effects of the Covid-19 pandemic[2]. Thus, knowing the greenness level of the urban environment can not only facilitate designers with healthy architectural design by considering the naturalness of the surrounding urban environment, but also increase the value of real estate which will attract customers who are seeking for healthy living spaces.</p>
+<p>Traditional methods of assessing built environment visual characteristics are time-consuming, labor heavy and difficult to generalize to different contexts. In recent years, with the development of computer vision[3], it is feasible to identify the semantic information such as plants, natural view and water features respectively from the urban environment without the labor of labeling items by hand. Moreover, the recent applications of machine learning techniques in urban and built environments [4] [5] [6] [7]as well as the accessibility of cameras, makes it possible to assess the naturalness of built environment by using urban environment images. </p>
+<p>To help the designer understand the view quality of the building, we need to understand: How to get the window green view index (window GVI) of a given building? To solve this problem, this project is aiming to 1) Train semantic segmentation model with street view images; 2) Extract street view image from Google Street View (GSV); 3) Crop the image to mimic the view from window; 4) Assess the GVI of the window view; The results of this project will help architectural designers by assessing the naturalness of the window view, especially for facade designers to make better decisions when they are designing fenestrations of building facades. 
+  </p>
+
+<br>
+<h2 id="Related Works">RELATED WORKS</h2>
+<p><b>Street level urban greenery.</b> Computer vision has been used in urban environments for safety prediction[7], tree type detection[8] and city feature identification[9]. And Yang et al.[10] firstly proposed a “Green View” index to evaluate the visibility of urban forests through photography interpretation. Their GVI was defined as the ratio of the total green area from pictures taken at a street intersection to the total area of pictures. However, there are a limited number of studies in the literature using GSV images for evaluation of street greenery. Li et al.[11] were the first one to use GSV images for assessing the human-viewed street greenery by using three color bands to extract the greenness of the GSV. </p>
+ <p><b>Semantic segmentation.</b>  All the studies mentioned above get the greenery level of the street view picture by analyzing the color bands of each picture, which is time consuming. For the semantic segmentation of images, traditional image segmentation algorithms are typically based on clustering often with additional information from contours and edges[12]. With the development of deep learning, Helbich et al.[13] were able to separate the green and blue area of the GSV by using a fully convolutional neural network developed by Long et al. (i.e., the FCN-8s)[14], that they learn a mapping from pixels to pixels, without extracting the region proposals like RCNN.</p>
+  <p>Most of the studies assessing urban greenery are focusing on outdoor experience. Limited number of papers considered the window view greenery. For this project, I will apply semantic segmentation method on GSV by considering the field of view from window to assess the window greenery level of a given building.</p>
+<br>
+<h2 id="Method">METHOD AND RESULTS</h2>
+<h3 id="train model"><i>Train FCN model</i></h3>
+<p>First of all, in this study, the fully convolution network (FCN) model, which is based on a residual neural network (ResNet34), was constructed to improve the accuracy of segmentation because ResNet prevents the vanishing gradient problem. </p>
+<p>During the model training, I used a small set of data from a larger dataset, Cityscapes (URL: https://www.cityscapes-dataset.com/) as training and validation datasets.  Cityscapes is a new large-scale dataset that contains a diverse set of stereo video sequences recorded in street scenes from 50 different cities, with high quality pixel-level annotations of 5 000 frames in addition to a larger set of 20 000 weakly annotated frames. </p>
+<p>This version is a processed subsample created as part of the Pix2Pix paper[15]. The dataset contains still images and the semantic segmentation labels which was created from the original videos. This is one of the best datasets around for semantic segmentation tasks. This subsample of the dataset has 2975 training images files and 500 validation image files. Each image file is 256x512 pixels, and each file is a composite with the original photo on the left half of the image, alongside the labeled image on the right half (samples of the training and validation images are shown in Figure 1).</p>
+<br>
+<div align="center">
+<img width="300" src="pic/1.jpg"> 
+<img width="300"src="pic/2.jpg">
+<br>
+<img width="300" src="pic/3.jpg">
+<img width="300" src="pic/4.jpg">
+<figcaption ><b>Figure 1.</b> Sample train data from the subset of the dataset (Link to the subsample of the dataset: https://www.kaggle.com/dansbecker/cityscapes-image-pairs)</figcaption> </div>
+ <br>
+ <p>Finally, after 20 epochs of training with 0.01 learning rate, this model was able to predict the label of training and validation dataset with the accuracy of 83% and 79%, respectively (samples of the output image segmentation images are shown in Figure 2).</p> 
+ <br>
+ <div align="center">
+  <img width="350" src="pic/acc.png"> &nbsp
+  <img width="550" src="pic/fcn.png"> 
+  <figcaption ><b>Figure 2.</b> Training accuracy and Samples prediction result of FCN-8s-ResNet34</figcaption> </div>
+  <br>
+<h3 id="Get GSV"><i>Get GSV as window view</i></h2>
+<p>To approximate the view from window, I decided to use street views near the building as the window view. I extracted Google street view (GSV) by using the Google Street View API. In this study, I chose UC Berkeley campus as an analysis target and predicted the view greenery level of the building in this area. </p>
+<p>In order to approximate the field of view from windows, I get the street view based on the geolocation of the selected buildings.  The total horizontal visual field (FOV) of human is 200 ° which is the union of monocular visual fields. But when people stand in front of the window, I only considered the outdoor view and ignored the indoor environment that could also be seen by people, which was not considered into the window view analysis. Thus, finally I used 180 ° as the total window visual field. Accommodating for the parameter of GSV API, I separate the total window visual field into three part, 0 °-60°, 60 °- 120 °,120 °- 180 °. Eventually, each window view was composed of three GSV images as shown in the following samples. After getting the window view, I used the image segmentation model to separate these views into different content as shown Figure 4.
+  
+</p>
+<div align="center">
+<img width="420"src="pic/fov.png">
+<figcaption ><b>Figure 3.</b> Horizontal visual field and window view visual field </figcaption> 
+<br>
+</div>
+<p>Thus, finally I used 180 ° as the total window visual field. Accommodating for the parameter of GSV API, I separate the total window visual field into three part, 0 °-60°, 60 °- 120 °,120 °- 180 °. Eventually, each window view was composed of three GSV images as shown in the following samples. After getting the window view, I used the image segmentation model to separate these views into different content as shown Figure 4.
+</p>
+<div align="center">
+<img width="150" src="pic/ucb1.png"> 
+<img width="153"src="pic/ucb2.png">
+<img width="150"src="pic/ucb3.png">
+<br>
+<img width="150" src="pic/ucb1a.png"> 
+<img width="153"src="pic/ucb3a.png">
+<img width="150"src="pic/ucb2a.png">
+<figcaption ><b>Figure 4.</b> window view created by using GSV and labeled window view </figcaption> </div>
+<br>
+
+<h3 id="Get GSV"><i>Calculate window GVI </i></h3>
+<p>Each pixel in the GSV was labeled into 18 colors and each color represented one type of content on the street (e.g. trees, buildings and grass). But, only cluster 13 and 14 represented the green area inside the window view (Figure 5). </p>
+<div align="center">
+  <img width="300" src="pic/color.png"> 
+  <figcaption ><b>Figure 5.</b> Color cluster 13 and 14 are labeled for greenery</figcaption> </div>
+  <br>
+<p>When I calculated the GVI of a single street view images, I used the following equation by getting the ratio of total number of pixels labeled as 13 and 14 to the total number of pixels in this image: </p>
+
+<div align="center">
+  <img width="650" src="pic/q2.png"> </div>
+<p>To test out the performance of the eqaution, I applied this equation to the training and validation set and calculate the GVI of several street views (examples of the GVI are shown in Figure 6):</p>
+<br>
+<div align="center">
+  <img width="650" src="pic/gvi.png">  </div>
+  <br>
+<p>For window GVI, window views were composed of three GSV images and the size of each GSV was the same. So, the equation of the window GVI were calculated as following by averaging out the GVI from each street view images:</p>
+<div align="center">
+  <img width="650" src="pic/q1.png"> </div>
+<br>
+  <h3 id="UCcampus"><i>Create window GVI maps for UC Berkeley Campus</i></h3>
+<p>To make the results of this project more interpretable, I created a window GVI heatmap for UC Berkeley campus, which could be easily understood by architectural designers and they can refer to the map when they are designing the fenestration of the facades. For students, they can find a place with a better window view to study in order to help them recover from the stressful coursework.</p>
+  <p>By using the window GVI calculated and the geolocation of each building around UC Berkeley campus, I visualized the level of the window GVI on the campus map (Figure 7). In this map, the darker the green, the larger the window GVI, which indicates that there is more greenery in the window view of this location and the greenery level of this place is higher compared to other buildings. And the arrow in the map represents the direction of the window, because the view on different sides of the street is significantly different and we cannot ignore this parameter when we are assessing the window view quality. From the figure, we could easily find that the window GVI can be significantly different on different side of road.
+  </p>
+  <div align="center">
+    <img width="700" src="pic/map.png"> 
+    <figcaption ><b>Figure 7.</b> Window GVI of Berkeley Campus</figcaption> </div>
+    <br>
+<h2 id="Conlusion">CONCLUSION AND DISSCUSION</h2>
+<p>In this study, I used the FCN model to separate street view into green space and other types. And using the labeled street image to calculate the window GVI. Finally, I created a window GVI map for UC Berkeley campus. </p>
+  <p>But there are some limitations of this project. For the trained FCN model, the prediction accuracy is still low. In the future, a better model and larger training epoch should be implemented to improve the performance of the model so as to get more accurate calculation of the window greenery. Then, when I get the window view, I only consider the horizontal field of view, but the vertical field of view is also important for view quality assessment. Besides, the result from this could only represent the window GVI for buildings with single floor. For the map creation, I only considered the existing buildings. But, places without buildings are also valuable for architectural designers who are designing new buildings from scratch.
+  </p>
+<br>
+<h2 id="future">FUTURE WORK</h2>
+<p>In the next step, I will create a detailed window GVI map from which users can get the greenery level of any point along the road instead of only considering places with buildings. And also, I will extend the content of the map from campus wide to countywide or statewide so as to facilitate any type of architectural project in the area. Besides, to evaluate the naturalness of the window view, I will also consider the blue level and brown level of the given window view, eventually this model can be comprehensive enough to assess how much nature can occupants get access to through the window view.
+  </p>
+<br>
+<br>
+<br>
+
+
+<h3 id="Reference">REFERENCE</h3>
+<div >
+<font size=1.5><p >
+  [1]	C. Son, S. Hegde, A. Smith, X. Wang, and F. Sasangohar, “Effects of COVID-19 on College Students’ Mental Health in the United States: Interview Survey Study,” J. Med. Internet Res., vol. 22, no. 9, p. e21279, 2020, doi: 10.2196/21279. <br>
+  [2]	M. Soga, M. J. Evans, K. Tsuchiya, and Y. Fukano, “A room with a green view: the importance of nearby nature for mental health during the COVID-19 pandemic,” Ecol. Appl., vol. n/a, no. e2248, p. e2248, Nov. 2020, doi: https://doi.org/10.1002/eap.2248. <br>
+  [3]	M. R. Ibrahim, J. Haworth, and T. Cheng, “Understanding cities with machine eyes: A review of deep computer vision in urban analytics,” Cities, vol. 96, p. 102481, Jan. 2020, doi: 10.1016/j.cities.2019.102481. <br>
+  [4]	J. M. Keralis et al., “Health and the built environment in United States cities: measuring associations using Google Street View-derived indicators of the built environment,” BMC Public Health, vol. 20, no. 1, p. 215, Feb. 2020, doi: 10.1186/s12889-020-8300-1. <br>
+  [5]	V.-A. Darvariu, L. Convertino, A. Mehrotra, and M. Musolesi, “Quantifying the Relationships between Everyday Objects and Emotional States through Deep Learning Based Image Analysis Using Smartphones,” Proc. ACM Interact. Mob. Wearable Ubiquitous Technol., vol. 4, no. 1, p. 7:1–7:21, Mar. 2020, doi: 10.1145/3380997. <br>
+  [6]	X. Wang, Y. Shi, B. Zhang, and Y. Chiang, “The Influence of Forest Resting Environments on Stress Using Virtual Reality,” Int. J. Environ. Res. Public. Health, vol. 16, no. 18, Sep. 2019, doi: 10.3390/ijerph16183263. <br>
+  [7]	N. (Nikhil D. Naik, “Visual urban sensing : understanding cities through computer vision,” Thesis, Massachusetts Institute of Technology, 2017. <br>
+  [8]	J. D. Wegner, S. Branson, D. Hall, K. Schindler, and P. Perona, “Cataloging Public Objects Using Aerial and Street-Level Images - Urban Trees,” 2016, pp. 6014–6023, Accessed: Dec. 16, 2020. [Online]. Available: https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Wegner_Cataloging_Public_Objects_CVPR_2016_paper.html. <br>
+  [9]	C. Doersch, S. Singh, A. Gupta, J. Sivic, and A. Efros, “What Makes Paris Look like Paris?,” ACM Trans. Graph., vol. 31, no. 4, Jul. 2012, Accessed: Dec. 09, 2020. [Online]. Available: https://hal.inria.fr/hal-01053876. <br>
+  [10]	J. Yang, L. Zhao, J. Mcbride, and P. Gong, “Can you see green? Assessing the visibility of urban forests in cities,” Landsc. Urban Plan., vol. 91, no. 2, pp. 97–104, Jun. 2009, doi: 10.1016/j.landurbplan.2008.12.004. <br>
+  [11]	X. Li, C. Zhang, W. Li, R. Ricard, Q. Meng, and W. Zhang, “Assessing street-level urban greenery using Google Street View and a modified green view index,” Urban For. Urban Green., vol. 14, no. 3, pp. 675–685, Jan. 2015, doi: 10.1016/j.ufug.2015.06.006. <br>
+  [12]	D. Weinland, R. Ronfard, and E. Boyer, “A survey of vision-based methods for action representation, segmentation and recognition,” Comput. Vis. Image Underst., vol. 115, no. 2, pp. 224–241, Feb. 2011, doi: 10.1016/j.cviu.2010.10.002. <br>
+  [13]	M. Helbich, Y. Yao, Y. Liu, J. Zhang, P. Liu, and R. Wang, “Using deep learning to examine street view green and blue spaces and their associations with geriatric depression in Beijing, China,” Environ. Int., vol. 126, pp. 107–117, May 2019, doi: 10.1016/j.envint.2019.02.013. <br>
+  [14]	J. Long, E. Shelhamer, and T. Darrell, “Fully convolutional networks for semantic segmentation,” in 2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2015, pp. 3431–3440, doi: 10.1109/CVPR.2015.7298965. <br>
+  [15]	P. Isola, J.-Y. Zhu, T. Zhou, and A. A. Efros, “Image-to-Image Translation with Conditional Adversarial Networks,” Nov. 2016, Accessed: Dec. 15, 2020. [Online]. Available: https://arxiv.org/abs/1611.07004v3.
+  
+  <br>
+</p>
+</font>
+</div>
+
+
+
+
+</body></html>
